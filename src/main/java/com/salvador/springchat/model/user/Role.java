@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-package com.salvador.springchat.controller;
+package com.salvador.springchat.model.user;
 
 /**
  *
- * @author salvador
+ * @author Administrador
  */
-@RestController
-public class MessageController {
-
+public enum Role {
+    USER,
+    ADMIN
 }

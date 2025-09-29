@@ -1,0 +1,25 @@
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Sign In Page</title>
+    </head>
+    <body>
+        <h1>Log In</h1>
+        <form method='post' action='login' id='login-form'>
+            <div>
+                <input required type="text" name="username" placeholder="Username"/>
+            </div>
+            <div>
+                <input required type="password" name="password" placeholder="Password"/>
+            </div>
+            <input type="submit" value="Log in" />
+        </form>
+        <p>Don't have an account?</p>
+        <a href='register.html'>Create new account</a>
+    </body>
+
+</html>

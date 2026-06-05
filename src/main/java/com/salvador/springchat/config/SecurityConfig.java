@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.context.DelegatingSecurityContextRepository;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 /**
  *
@@ -25,6 +28,13 @@ public class SecurityConfig {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
+    public SecurityContextRepository securityContextRepository() {
+        return new DelegatingSecurityContextRepository(
+                new HttpSessionSecurityContextRepository()
+        );
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(config
@@ -32,21 +42,21 @@ public class SecurityConfig {
                 .formLogin(
                         form
                         -> form.
-                                loginPage("/login.html")
+                                loginPage("/login")
                                 .permitAll()
+                                .defaultSuccessUrl("/home", true)
                 )
                 .authorizeHttpRequests(
                         authorize
                         -> authorize
-                                .requestMatchers("/register.html", "/login", "/register")
+                                .requestMatchers("/login", "/register")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )
                 .authenticationProvider(authenticationProvider)
-                .sessionManagement(
-                        session
-                        -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .securityContext(context -> context
+                .securityContextRepository(securityContextRepository())
                 )
                 .build();
     }

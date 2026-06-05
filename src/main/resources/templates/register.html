@@ -5,21 +5,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Sign In Page</title>
+        <title>Sign Up Page</title>
     </head>
     <body>
-        <h1>Log In</h1>
-        <form method='post' action='login' id='login-form'>
+        <h1>Sign Up</h1>
+        <form method='post' action='register' id='login-form'>
+            <div>
+                <input required type="text" name="email" placeholder="Email"/>
+            </div>
             <div>
                 <input required type="text" name="username" placeholder="Username"/>
             </div>
             <div>
                 <input required type="password" name="password" placeholder="Password"/>
             </div>
-            <input type="submit" value="Log in" />
+            <div>
+                <input required type="text" name="avatarUrl" placeholder="Avatar"/>
+            </div>
+            <input type="submit" value="Sign Up" />
         </form>
-        <p>Don't have an account?</p>
-        <a href='register.html'>Create new account</a>
+        <p>Alredy have an account?</p>
+        <a href='login'>Sign in to your account</a>
     </body>
-
 </html>
